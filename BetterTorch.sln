@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterTorch.Client", "BetterTorch.Client\BetterTorch.Client.csproj", "{3671753C-830B-48FD-95B8-ADC44E50FF1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterTorch.Server", "BetterTorch.Server\BetterTorch.Server.csproj", "{64C9940F-6719-4AEB-9632-867F2A328D90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3671753C-830B-48FD-95B8-ADC44E50FF1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3671753C-830B-48FD-95B8-ADC44E50FF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3671753C-830B-48FD-95B8-ADC44E50FF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3671753C-830B-48FD-95B8-ADC44E50FF1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C9940F-6719-4AEB-9632-867F2A328D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C9940F-6719-4AEB-9632-867F2A328D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C9940F-6719-4AEB-9632-867F2A328D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C9940F-6719-4AEB-9632-867F2A328D90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A8D5CF5-51DE-4744-8C9A-F698CACFDCA3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,4 @@
+C:\Users\Xander\Desktop\FiveMServers\BasicDevelopmentServer\resources\[custom]\Better-Torch\BetterTorch.Client.net.dll
+C:\Users\Xander\source\repos\BetterTorch\BetterTorch.Client\obj\Debug\BetterTorch.Client.csprojAssemblyReference.cache
+C:\Users\Xander\source\repos\BetterTorch\BetterTorch.Client\obj\Debug\BetterTorch.Client.csproj.CoreCompileInputs.cache
+C:\Users\Xander\source\repos\BetterTorch\BetterTorch.Client\obj\Debug\BetterTorch.Client.net.dll
