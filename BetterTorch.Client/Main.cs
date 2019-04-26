@@ -43,12 +43,19 @@ namespace BetterTorch.Client
             {
                 Tick += DrawSyncedLights;
             }
+
+            // Pos Sync
+            Prop weaponObject = newClient.Character.Weapons.CurrentWeaponObject;
+            weaponObject.Detach();
+            weaponObject.AttachTo(newClient.Character.Bones[Bone.SKEL_R_Hand], new Vector3(0.125f, 0.07f, -0.03f), new Vector3(95f, -25f, 0f));
         }
 
         // EventHandler - Remove Synced Client
         private void Event_RemoveSyncedClient(string _id)
         {
-            SyncedClients.Remove(new PlayerList()[Convert.ToInt32(_id)]);
+            Player newClient = new PlayerList()[Convert.ToInt32(_id)];
+            SyncedClients.Remove(newClient);
+
             if (SyncedClients.Count == 0)
             {
                 Tick -= DrawSyncedLights;
@@ -74,15 +81,11 @@ namespace BetterTorch.Client
         {
             Tick += FlashlightHandler;
             await Game.Player.Character.Task.PlayAnimation(animations["equip"].dict, animations["equip"].name, 8f, -8f, -1, AnimationFlags.AllowRotation | AnimationFlags.StayInEndFrame | AnimationFlags.UpperBodyOnly, -8f);
-            Prop weaponObject = Game.Player.Character.Weapons.CurrentWeaponObject;
-
-            // Setup New Position
-            weaponObject.Detach();
-            weaponObject.AttachTo(Game.Player.Character.Bones[Bone.SKEL_R_Hand], new Vector3(0.125f, 0.07f, -0.03f), new Vector3(95f, -25f, 0f));
 
             // Set Equipped
             isEquipped = true;
 
+            await Delay(250);
             TriggerServerEvent("BetterTorch:PassSyncedClient");
         }
 
@@ -115,13 +118,16 @@ namespace BetterTorch.Client
         {
             foreach (Player client in SyncedClients)
             {
-                bool flashlightOn = API.DecorGetBool(Game.Player.Character.Handle, "FlashlightOn");
+                bool flashlightOn = API.DecorGetBool(client.Character.Handle, "FlashlightOn");
                 if (flashlightOn)
                 {
                     Prop flashlight = client.Character.Weapons.CurrentWeaponObject;
-                    Vector3 LightPosition = flashlight.GetOffsetPosition(new Vector3(0.2f, 0f, 0f));
-                    Vector3 ForwardPosition = Game.Player.Character.ForwardVector;
-                    World.DrawSpotLightWithShadow(LightPosition, ForwardPosition, System.Drawing.Color.FromArgb(255, 255, 255), 100f, 5f, 25f, 15f, 50f);
+                    if (flashlight != null)
+                    {
+                        Vector3 LightPosition = flashlight.GetOffsetPosition(new Vector3(0.2f, 0f, 0f));
+                        Vector3 ForwardPosition = client.Character.ForwardVector;
+                        World.DrawSpotLight(LightPosition, ForwardPosition, System.Drawing.Color.FromArgb(255, 255, 255), 100f, 5f, 25f, 15f, 50f);
+                    }
                 }
             }
             await Task.FromResult(0);
